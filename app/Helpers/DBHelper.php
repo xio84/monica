@@ -62,6 +62,6 @@ class DBHelper
 
     public static function getTable($name)
     {
-        return '`'.static::connection()->getTablePrefix().$name.'`';
+        return ''.static::connection()->getTablePrefix().$name.'';
     }
 }

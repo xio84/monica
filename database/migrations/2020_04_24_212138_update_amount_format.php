@@ -83,8 +83,9 @@ class UpdateAmountFormat extends Migration
             });
 
         Schema::table('gifts', function (Blueprint $table) {
-            $table->integer('value')->change()->nullable();
-            $table->renameColumn('value', 'amount');
+            $table->dropColumn('value');
+            $table->integer('amount')->nullable();
+            // $table->renameColumn('value', 'amount');
         });
     }
 
