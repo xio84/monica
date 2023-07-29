@@ -60,7 +60,7 @@ class Tag extends Model
                         'tags.account_id' => auth()->user()->account_id,
                         'contacts.address_book_id' => null,
                     ])
-                    ->groupBy('tag_id')
+                    ->groupBy('tag_id', 'name')
                     ->get()
                     ->sortByCollator('name');
     }
