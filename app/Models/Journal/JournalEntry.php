@@ -74,8 +74,12 @@ class JournalEntry extends Model
         $journal->account_id = $resourceToLog->account_id;
         $journal->date = now(DateHelper::getTimezone());
         if ($resourceToLog instanceof \App\Models\Account\Activity) {
+            $journal->journalable_id = 0;
+            $journal->journalable_type = "\App\Models\Account\Activity";
             $journal->date = $resourceToLog->happened_at;
         } elseif ($resourceToLog instanceof \App\Models\Journal\Entry) {
+            $journal->journalable_id = 1;
+            $journal->journalable_type = "\App\Models\Journal\Entry";
             $journal->date = $resourceToLog->attributes['date'];
         }
         $journal->save();

@@ -142,9 +142,9 @@ SET FOREIGN_KEY_CHECKS=0;
             return;
         }
 
-        // adding a ` for each column
+        // adding a ' for each column
         $listOfColumns = array_map(function ($column) {
-            return '`'.$column.'`';
+            return "'".$column."'";
         }, $columns);
         $listOfColumns = implode(',', $listOfColumns);
 
@@ -1330,7 +1330,7 @@ SET FOREIGN_KEY_CHECKS=0;
             return;
         }
 
-        $sql = 'INSERT IGNORE INTO '.DBHelper::getTable('contact_photo').' (`contact_id`, `photo_id`, `created_at`, `updated_at`) VALUES'.PHP_EOL;
+        $sql = 'INSERT IGNORE INTO '.DBHelper::getTable('contact_photo')." ('contact_id', 'photo_id', 'created_at', 'updated_at') VALUES".PHP_EOL;
         $insertValues = [];
         foreach ($contacts as $contact) {
             $photos = DB::table('contact_photo')

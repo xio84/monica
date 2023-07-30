@@ -51,10 +51,10 @@ class DBHelper
      */
     public static function getTables()
     {
-        return DB::select('SELECT table_name as `table_name`
+        return DB::select("SELECT table_name as 'table_name'
                 FROM information_schema.tables
                 WHERE table_schema = :table_schema
-                AND table_name LIKE :table_prefix', [
+                AND table_name LIKE :table_prefix", [
             'table_schema' => static::connection()->getDatabaseName(),
             'table_prefix' => '%'.static::connection()->getTablePrefix().'%',
         ]);
